@@ -1,0 +1,5 @@
+# Raw full-size tab dumps — these contain unredacted live traffic numbers.
+# NEVER publish them. The README uses the redacted crops generated from them
+# (changes-review-card.png and reports-audit-trend.png).
+changes-review.png
+reports-audit.png

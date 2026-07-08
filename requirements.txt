@@ -1,0 +1,19 @@
+# Core dependencies for KittyRank (OSS Edition)
+
+# HTTP + WordPress REST + Bing API
+requests>=2.31.0
+
+# Google APIs (GSC + Indexing)
+google-api-python-client>=2.100.0
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+
+# Claude API (for AI-driven fix proposals)
+anthropic>=0.39.0
+
+# Data parsing (CSV from manual exports)
+# (csv + zipfile come standard with Python — no install needed)
+
+# Optional: GA4 if you want bounce-rate signals
+# google-analytics-data>=0.18.0
+beautifulsoup4>=4.12.0

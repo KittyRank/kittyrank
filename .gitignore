@@ -1,0 +1,42 @@
+# Secrets — NEVER commit
+config.py
+*.json
+!package.json
+!package-lock.json
+!schema.json
+.env
+.env.*
+
+# GCP service account
+*-service-account*.json
+*service-account*.json
+*-credentials*.json
+
+# Output dirs (per-site state, NEVER commit)
+output/
+GA-reports/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local-only
+*.local
+*.log
+*.tmp
+
+# Google OAuth token (local only)
+output/google-oauth-token.json
+google-oauth-token.json
