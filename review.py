@@ -3620,7 +3620,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
                 return
             tvars = self._get_template_vars()
             page = HTML_TEMPLATE.substitute(**tvars)
-            self._respond(200, 'text/html', page.encode('utf-8'))
+            self._respond(200, 'text/html', page.encode('utf-8', 'replace'))  # 'replace' guards against lone surrogates in fix data
 
         elif self.path == '/setup' or self.path == '/settings':
             self._respond(200, 'text/html', SETUP_WIZARD_HTML.encode('utf-8'))
@@ -3668,7 +3668,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
                 try:
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8'))
+                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8', 'replace'))
                 except Exception as e:
                     self._respond(500, 'application/json', json.dumps({'error': str(e)}).encode('utf-8'))
             else:
@@ -3714,7 +3714,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
                             p['dismissed'] = True
                             p['dismissed_at'] = d.get('date', '')[:10]
                             p['escalated'] = p.get('split_queries', 0) > d.get('split_queries', 0)
-                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8'))
+                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8', 'replace'))
                 except Exception as e:
                     self._respond(500, 'application/json', json.dumps({'error': str(e)}).encode('utf-8'))
             else:
@@ -3732,7 +3732,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
                 try:
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8'))
+                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8', 'replace'))
                 except Exception as e:
                     self._respond(500, 'application/json', json.dumps({'error': str(e)}).encode('utf-8'))
             else:
@@ -3750,7 +3750,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
                 try:
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8'))
+                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8', 'replace'))
                 except Exception as e:
                     self._respond(500, 'application/json', json.dumps({'error': str(e)}).encode('utf-8'))
             else:
@@ -3769,7 +3769,7 @@ class ReviewHandler(BaseHTTPRequestHandler):
                 try:
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8'))
+                    self._respond(200, 'application/json', json.dumps(data, ensure_ascii=False).encode('utf-8', 'replace'))
                 except Exception as e:
                     self._respond(500, 'application/json',
                                   json.dumps({'error': str(e)}).encode('utf-8'))
